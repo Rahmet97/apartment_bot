@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  apartment-monitor:
+    build: .
+    container_name: apartment-monitor
+    restart: unless-stopped
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_CHANNEL_ID=${TELEGRAM_CHANNEL_ID}
+      - DATABASE_PATH=/app/data/apartments.db
+      - MAX_PRICE=${MAX_PRICE}
+      - CHECK_INTERVAL=${CHECK_INTERVAL}
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    networks:
+      - apartment-network
+
+  telegram-bot:
+    build: .
+    container_name: telegram-bot
+    restart: unless-stopped
+    command: ["python", "bot.py"]
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - DATABASE_PATH=/app/data/apartments.db
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    networks:
+      - apartment-network
+    depends_on:
+      - apartment-monitor
+
+networks:
+  apartment-network:
+    driver: bridge
+
+volumes:
+  apartment-data:
+  apartment-logs:

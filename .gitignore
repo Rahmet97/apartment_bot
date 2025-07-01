@@ -1,0 +1,5 @@
+.venv/
+.idea/
+logs/
+.env
+db_setup.log
