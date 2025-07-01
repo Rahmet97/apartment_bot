@@ -22,10 +22,10 @@
 
 ### 1. Клонирование репозитория
 
-\`\`\`bash
+```bash
 git clone <repository-url>
 cd apartment-monitor
-\`\`\`
+```
 
 ### 2. Создание Telegram бота
 
@@ -39,46 +39,46 @@ cd apartment-monitor
 
 Создайте файл `.env`:
 
-\`\`\`bash
+```bash
 cp .env.example .env
-\`\`\`
+```
 
 Заполните переменные:
 
-\`\`\`env
+```env
 TELEGRAM_BOT_TOKEN=your_bot_token_here
 TELEGRAM_CHANNEL_ID=@your_channel_username_or_chat_id
 MAX_PRICE=30000
 CHECK_INTERVAL=300
-\`\`\`
+```
 
 ### 4. Установка зависимостей
 
-\`\`\`bash
+```bash
 make install
-\`\`\`
+```
 
 ### 5. Настройка базы данных
 
-\`\`\`bash
+```bash
 make setup
-\`\`\`
+```
 
 ## 🚀 Запуск
 
 ### Локальный запуск
 
-\`\`\`bash
+```bash
 # Запуск мониторинга
 make run
 
 # В другом терминале - запуск бота
 make run-bot
-\`\`\`
+```
 
 ### Запуск в Docker
 
-\`\`\`bash
+```bash
 # Сборка и запуск
 make docker-build
 make docker-run
@@ -88,7 +88,7 @@ make docker-logs
 
 # Остановка
 make docker-stop
-\`\`\`
+```
 
 ## 🤖 Команды Telegram бота
 
@@ -109,7 +109,7 @@ make docker-stop
 
 ## 🧪 Тестирование
 
-\`\`\`bash
+```bash
 # Запуск всех тестов
 make test
 
@@ -118,11 +118,11 @@ make lint
 
 # Форматирование кода
 make format
-\`\`\`
+```
 
 ## 📁 Структура проекта
 
-\`\`\`
+```
 apartment-monitor/
 ├── main.py              # Основной модуль мониторинга
 ├── bot.py               # Telegram бот
@@ -138,7 +138,7 @@ apartment-monitor/
 │   └── setup_database.py
 └── .github/workflows/  # CI/CD
     └── ci-cd.yml
-\`\`\`
+```
 
 ## 🔧 Разработка
 
@@ -175,25 +175,25 @@ apartment-monitor/
 
 ### Проблемы с Docker
 
-\`\`\`bash
+```bash
 # Пересборка образов
 docker-compose build --no-cache
 
 # Очистка системы
 docker system prune -a
-\`\`\`
+```
 
 ## 📝 Логирование
 
 Логи доступны через:
 
-\`\`\`bash
+```bash
 # Docker логи
 make docker-logs
 
 # Локальные логи
 tail -f logs/apartment-monitor.log
-\`\`\`
+```
 
 ## 🔒 Безопасность
 
